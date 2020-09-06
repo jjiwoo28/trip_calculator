@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="title" content="텍스트 정산 계산기" />
+
+    </head>
+    <body>
+        <div class="title">
+            텍스트 정산 계산기
+        </div>
+        <div class="cotainer">
+            <div class="incon">
+                <input type="text" id="content" />
+                <button class="button1" onclick="input()">입력하기</button>
+                <h3 class="output"></h3>
+            </div>
+        </div>
+        <h3 class="test1"></h3>
+        <h3 class="test2"></h3>
+        <h3 class="test3"></h3>
+        <script>
+            function input() {
+                var str = $('#content').val();
+                var str = str.replace(/천/g, '000');
+                var str = str.replace(/만/g, '0000');
+
+                //document.write(str, '<br>');
+                str = str.replace(/[^0-9]/g, '.');
+                str.trim();
+                var strNUM = str.length;
+                console.log(typeof str);
+                //console.log(sldfk);
+                //console.log(str);
+
+                for (var i = 0; i < strNUM + 1; i++) {
+                    var a = i;
+                    var aa = str.charAt(i);
+                    var aaa = str.charAt(i + 1);
+                    //document.write(aaa, '<br>');
+                    //document.write(aa, '<br>');
+                    //document.write("확인", '<br>');
+                    console.log('jiwoogaji');
+
+                    if (aa == '.') {
+                        if (aaa == '.') {
+                            str = str.replace('.', '*');
+                        } else if (aaa != '.') {
+                            str = str.replace('.', '+');
+                            //document.write("성공", '<br>');
+                        }
+                        //  document.write(str, '<br>');
+                    }
+                }
+                // document.write("반복문 종료", '<br>');
+                var lastChar = str.charAt(str.length - 1);
+                //  document.write(lastChar, '<br>');
+                if (lastChar == '+') {
+                    //   document.write(lastChar, '<br>');
+                    str = str.slice(0, -1);
+                    //  document.write(str, '<br>');
+                }
+                // document.write(str, '<br>');
+                //document.write("마지막 연산자 제거", '<br>');
+                str = str.replace(/\*/g, '');
+                //document.write(str, '<br>');
+                str = str.replace('+', '');
+                // document.write(str, '<br>');
+
+                str = str + '=' + eval(str);
+                //document.write(str, '<br>');
+                $('.output').html(str);
+                //document.write(str);
+
+                //document.write(result, '<br>');
+            }
+            function searchNUM() {
+                var str = $('#content').val();
+                for (var i in str.lenth) {
+                    var testNUM = str.charAt(i);
+                    if (str.charAt(i) == '+') {
+                        if (str.charAt(i + 1) != '+') {
+                            str.charAt(i) = '';
+                        }
+                    }
+                }
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+body {
+    font-family: 'Jua', sans-serif;
+}
+.title {
+	text-align : center;
+	font-size: 30px;
+    font-family: 'Jua', sans-serif;
+}
+.cotainer{
+    width : 100%;
+    height : 200px;
+    text-align : center;
+   
+    
+}
+.incon{
+    
+    margin-right : auto;
+    margin-left : auto;
+    text-align :center;
+}
+
+@media screen and (max-width: 600px) {
+    html {
+    font-size: 10px;
+    }
+    .cotainer{
+        
+    }
+}
